@@ -110,35 +110,36 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno
 citado acima, no lugar de "pessoas".
 */
-carro.adicionaPessoa = function(pessoas){
-	var mensagem_ocupantes = 'Já temos ' + carro.quantidadePessoas + ' no carro. '; // mensagem de quantos assentos ja estao ocupados, antes de adicionar mais pessoas
-	var assentosLivres = carro.assentos - carro.quantidadePessoas; // calcula numero de assentos livres no carro
-	var diferenca = pessoas - assentosLivres;
-	pessoas = pessoas > assentosLivres ? assentosLivres : pessoas;
-
-	if(pessoas && (diferenca <= 0)){
-		carro.quantidadePessoa += pessoas; // ocupa os lugares livres no carro
-		return mensagem_ocupantes;
+carro.adicionarPessoa = function(pessoas){
+	var lugaresVagos = carro.assentos - carro.quantidadePessoas;
+	var tratamento;
+	// testa se esta cheio
+	if(lugaresVagos){
+		if(pessoas > lugaresVagos){
+			carro.quantidadePessoas = carro.assentos;
+			tratamento = lugaresVagos == 1 ? 'pessoa' : 'pessoas';
+			return 'Só cabem mais ' + lugaresVagos + ' ' + tratamento + '. Agora, o carro está lotado!';
+		}
+		else {
+			carro.quantidadePessoas += pessoas;
+			lugaresVagos = carro.assentos - carro.quantidadePessoas;
+			tratamento = lugaresVagos == 1 ? 'pessoa' : 'pessoas';
+			return 'Ainda tem lugar para ' + lugaresVagos + ' ' + tratamento + '!';
+		}
 	}
-	else if(pessoa && (diferenca > 0)){
-		carro.quantidadePessoa += pessoas; // ocupa os lugares livres no carro
-		return mensagem_ocupantes + 'Só cabem mais ' + assentosLivres + ' ' + (assentosLivres == 1) ? 'pessoa!' : 'pessoas!';
-	}
-	else {
-		return mensagem_ocupantes + 'O carro já está lotado!';
-	}
+	return 'O carro já está lotado!';
 }
 
 
-carro.tiraPessoa = function(pessoas){
-	pessoas = pessoas > carro.quantidadePessoa ? carro.quantidadePessoa : pessoas;
-	carro.quantidadePessoa -= pessoas;
+carro.tirarPessoa = function(pessoas){
+	pessoas = pessoas > carro.quantidadePessoas ? carro.quantidadePessoas : pessoas;
+	carro.quantidadePessoas -= pessoas;
 
 	if(pessoas > 1){
-		return 'Foram retiradas ' + pessoas + ' pessoas do carro!';
+		return 'Foram retiradas ' + pessoas + ' pessoas do carro. Sobraram ' + carro.quantidadePessoas + '!';
 	}
 	else {
-		return 'Foi retirada ' + (pessoas ? 'uma' : 'nenhuma') + ' pessoa do carro!';
+		return 'Foi retirada ' + (pessoas ? 'uma' : 'nenhuma') + ' pessoa do carro. Sobraram ' + carro.quantidadePessoas + '!';
 	}
 }
 
@@ -168,20 +169,20 @@ carro.obterCor(); // musgo
 carro.obterMarcaModelo(); // 'Esse carro é um fiat uno.'
 
 // Adicione 2 pessoas no carro.
-carro.adicionaPessoa(2); // 'Já temos 0 pessoa no carro. '
+carro.adicionarPessoa(2); // "Ainda tem lugar para 3 pessoas!"
 
 // Adicione mais 4 pessoas no carro.
-carro.adicionaPessoa(4); // 'Já temos 2 pessoas no carro. Só cabem mais 3 pessoas!'
+carro.adicionarPessoa(4); // "Só cabem mais 3 pessoas. Agora, o carro está lotado!"
 
 // Faça o carro encher.
-carro.adicionaPessoa(4); // 'Já temos 5 pessoas no carro. O carro já está lotado!'
+carro.adicionarPessoa(4); // "O carro já está lotado!"
 
 // Tire 4 pessoas do carro.
-carro.tiraPessoa(4); // 'Foram retiradas 4 pessoas!'
+carro.tirarPessoa(4); // 'Foram retiradas 4 pessoas do carro. Sobraram 1!'
 
 // Adicione 10 pessoas no carro.
-carro.adicionaPessoa(10); // 'Já temos 1 pessoa no carro. Só cabem mais 4 pessoas!'
+carro.adicionarPessoa(10); // "O carro já está lotado!"
 
 // Quantas pessoas temos no carro?
-carro.quantidadePessoa; // 5
+carro.quantidadePessoas; // 5
 ```
