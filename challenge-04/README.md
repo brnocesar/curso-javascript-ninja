@@ -128,7 +128,7 @@ carro.adicionarPessoa = function(pessoas){
 		}
 	}
 	return 'O carro já está lotado!';
-}
+} // esta funcao funciona se o numero de pessoa adicionadas no carro for POSITIVO
 
 
 carro.tirarPessoa = function(pessoas){
