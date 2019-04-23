@@ -55,7 +55,7 @@ Crie um método chamado `nomeCompleto`, que retorne a frase:
 - "Olá! Meu nome é [NOME] [SOBRENOME]!"
 */
 pessoa.nome_completo = function(){
-	return 'Olá! Meu nome é ' + pessoa.nome + pessoa.sobrenome + '!';
+	return 'Olá! Meu nome é ' + pessoa.nome + ' ' + pessoa.sobrenome + '!';
 }
 
 /*
@@ -71,7 +71,7 @@ Crie um método chamado `mostrarPeso`, que retorne a frase:
 - "Eu peso [PESO]Kg."
 */
 pessoa.mostrar_peso = function(){
-	return 'Eu peso' + pessoa.peso + '.';
+	return 'Eu peso' + pessoa.peso + ' Kg.';
 }
 
 /*
@@ -87,25 +87,25 @@ Agora vamos brincar um pouco com o objeto criado:
 Qual o nome completo da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.nome_completo(); // bruno cesar
+pessoa.nome_completo(); // 'Olá! Meu nome é bruno cesar!'
 
 /*
 Qual a idade da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrar_idade(); // 26
+pessoa.mostrar_idade(); // 'Olá, eu tenho 26 anos!'
 
 /*
 Qual o peso da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrar_peso(); // 85
+pessoa.mostrar_peso(); // 'Eu peso 85 Kg.'
 
 /*
 Qual a altura da pessoa? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-pessoa.mostrar_altura(); // 1.7
+pessoa.mostrar_altura(); // 'Minha altura é 1.7 m.'
 
 /*
 Faça a `pessoa` fazer 3 aniversários.
@@ -119,7 +119,7 @@ Quantos anos a `pessoa` tem agora? (Use a instrução para responder e
 comentários inline ao lado da instrução para mostrar qual foi a resposta
 retornada)
 */
-pessoa.mostrar_idade(); // 29
+pessoa.mostrar_idade(); // 'Olá, eu tenho 29 anos!'
 
 /*
 Agora, faça a `pessoa` caminhar alguns metros, invocando o método `andar` 3x,
@@ -174,15 +174,15 @@ pessoa.apresentacao = function(){
 	if(pessoa.sexo === 'feminino'){
 		genero = 'a';
 	}
-	var tratamento = null;
+	var tratamento = ano;
 	if(pessoa.idade > 1){
-		tratamento = 's';
+		tratamento = 'anos';
 	}
-	var distancia = null;
+	var distancia = metro;
 	if(pessoa.caminhou_quantos_metros > 1){
-		distancia = 's';
+		distancia = 'metros';
 	}
-	return 'Olá, eu sou ' + genero + pessoa.sexo + ', tenho ' + pessoa.idade + ' ano' + tratamento + ', ' + pessoa.altura + ', meu peso é ' +  + ' e, só hoje, eu já caminhei ' + pessoa.caminhou_quantos_metros + ' metro' + distancia + '!';
+	return 'Olá, eu sou ' + genero + pessoa.sexo + ', tenho ' + pessoa.idade + tratamento + ', ' + pessoa.altura + ' m, meu peso é ' +  + ' Kg e, só hoje, eu já caminhei ' + pessoa.caminhou_quantos_metros + ' ' + distancia + '!';
 }
 
 // Agora, apresente-se ;)
