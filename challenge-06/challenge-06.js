@@ -76,25 +76,27 @@ while(counter <= 30){
     "Não temos o equivalente hexadecimal para [COR]."
 */
 var convertToHex = function(color){
+	var hexa;
 	switch(color){
 		case 'red':
-			return 'O hexadecimal para a cor ' + color + ' é #FF0000.';
+			hexa = '#FF0000';
 			break;
 		case 'yellow':
-			return 'O hexadecimal para a cor ' + color + ' é #FFFF00.';
+			hexa = '#FFFF00';
 			break;
 		case 'blue':
-			return 'O hexadecimal para a cor ' + color + ' é #0000FF.';
+			hexa = '#0000FF';
 			break;
 		case 'green':
-			return 'O hexadecimal para a cor ' + color + ' é #008000.';
+			hexa = '#008000';
 			break;
 		case 'gray':
-			return 'O hexadecimal para a cor ' + color + ' é #808080.';
+			hexa = '#808080';
 			break;
 		default:
 			return 'Não temos o equivalente hexadecimal para ' + color + '.'
 	}
+	return 'O hexadecimal para a cor ' + color + ' é ' + hexa + '.';
 }
 
 /*
