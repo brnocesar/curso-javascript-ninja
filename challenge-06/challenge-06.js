@@ -42,8 +42,6 @@ function showTeamPosition(position){
 	return 'Não temos a informação do time que está nessa posição.';
 }
 
-
-
 /*
 4) Escolha 4 times do campeonato selecionado e mostre a posição dele, usando a
 função acima. Entre esses 4, adicione 1 que não esteja entre os 5 primeiros.
