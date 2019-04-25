@@ -72,7 +72,6 @@ console.log('A função ' + varShowName.name + ' retorna ' + varShowName(meu_nom
     () Se o operador não for válido, retornar a frase:
         "Operação inválida."
 */
-var x = 9, y = 3;
 function calculator(operation){
     return function(x, y){
         var result;
